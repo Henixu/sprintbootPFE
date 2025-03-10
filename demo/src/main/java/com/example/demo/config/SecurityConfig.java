@@ -19,7 +19,7 @@ public class SecurityConfig {
         http
                 .csrf().disable() // Disable CSRF for development purposes
                 .authorizeRequests()
-                .requestMatchers("/auth/register", "/auth/login").permitAll() // Public access for these endpoints
+                .requestMatchers("/auth/register", "/auth/login","/admin/trainings/create","/admin/trainings/update/**","/admin/trainings/delete/*").permitAll() // Public access for these endpoints
                 .anyRequest().authenticated() // All other endpoints require authentication
                 .and()
                 .sessionManagement().disable();

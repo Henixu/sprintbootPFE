@@ -21,7 +21,7 @@ public class User {
     @Column(nullable = false, unique = true)
     private String email;
 
-    private String role = "USER";
+    private String role = "ADMIN";
 
     // Getters and Setters
     public Long getId() {
