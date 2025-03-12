@@ -23,6 +23,13 @@
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
 
+		<dependency>
+			<groupId>com.google.protobuf</groupId>
+			<artifactId>protobuf-java</artifactId>
+			<version>3.21.12</version> <!-- Use a version compatible with your other libraries -->
+		</dependency>
+
+
 		<!-- Spring Boot DevTools pour développement -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -67,6 +74,12 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-crypto</artifactId>
 		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+
 
 		<!-- SLF4J for logging -->
 		<dependency>

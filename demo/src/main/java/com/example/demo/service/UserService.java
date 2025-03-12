@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -51,4 +52,44 @@ public class UserService {
             throw new IllegalArgumentException("Invalid username or password");
         }
     }
+
+    // ------------------------------
+    // Admin CRUD Methods
+    // ------------------------------
+
+    // 1) List all users
+    public List<User> getAllUsers() {
+        return userRepository.findAll();
+    }
+
+    // 2) Get a user by ID
+    public Optional<User> getUserById(Long id) {
+        return userRepository.findById(id);
+    }
+
+    // 3) Create a user (if needed by admin; similar to registration)
+    public User createUser(User user) {
+        String encryptedPassword = passwordEncoder.encode(user.getPassword());
+        user.setPassword(encryptedPassword);
+        return userRepository.save(user);
+    }
+
+    // 4) Update a user by ID
+    public User updateUser(Long id, User updatedData) {
+        return userRepository.findById(id).map(existingUser -> {
+            existingUser.setUsername(updatedData.getUsername());
+            existingUser.setEmail(updatedData.getEmail());
+            // Update password only if provided (and non-empty)
+            if (updatedData.getPassword() != null && !updatedData.getPassword().isBlank()) {
+                existingUser.setPassword(passwordEncoder.encode(updatedData.getPassword()));
+            }
+            return userRepository.save(existingUser);
+        }).orElseThrow(() -> new IllegalArgumentException("User not found with ID: " + id));
+    }
+
+    // 5) Delete a user by ID
+    public void deleteUser(Long id) {
+        userRepository.deleteById(id);
+    }
 }
+
