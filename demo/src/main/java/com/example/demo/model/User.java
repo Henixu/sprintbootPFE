@@ -23,8 +23,8 @@ public class User {
 
     @Column(nullable = false, unique = true)
     private String email;
-
-    private String role = "ADMIN";
+    @Column(nullable = false)
+    private String role = "USER";
 
 
 }

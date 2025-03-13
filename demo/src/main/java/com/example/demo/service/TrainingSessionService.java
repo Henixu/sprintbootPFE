@@ -23,8 +23,8 @@ public class TrainingSessionService {
                 .orElseThrow(() -> new RuntimeException("Training not found with id: " + trainingId));
 
         TrainingSession session = new TrainingSession();
-        session.setStart(dto.getStart());
-        session.setEnd(dto.getEnd());
+        session.setStart(dto.start());
+        session.setEnd(dto.end());
         session.setTraining(training);
 
         // Optionally add the session to the training's session list
@@ -38,8 +38,8 @@ public class TrainingSessionService {
         TrainingSession session = trainingSessionRepository.findById(sessionId)
                 .orElseThrow(() -> new RuntimeException("Session not found with id: " + sessionId));
 
-        session.setStart(dto.getStart());
-        session.setEnd(dto.getEnd());
+        session.setStart(dto.start());
+        session.setEnd(dto.end());
 
         return trainingSessionRepository.save(session);
     }

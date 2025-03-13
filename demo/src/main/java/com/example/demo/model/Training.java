@@ -25,7 +25,7 @@ public class Training {
     @Column(nullable = false)
     private String title;
 
-    @Column(nullable = false)
+    @Column(name="description", nullable = false)
     private String description;
 
     @Enumerated(EnumType.STRING)

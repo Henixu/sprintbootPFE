@@ -1,31 +1,22 @@
 package com.example.demo.dto;
 
-
-
 import com.example.demo.model.TrainingType;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.*;
-import lombok.Data;
-
 import java.time.LocalDate;
-@Data
-public class TrainingCreateDTO {
-    @NotBlank(message = "Title is required")
-    private String title;
 
-    @NotBlank(message = "Description is required")
-    private String description;
+public record TrainingCreateDTO(
+        @NotBlank(message = "Title is required") String title,
 
-    @NotNull(message = "Type is required")
-    private TrainingType type;
+        @NotBlank(message = "Description is required") String description,
 
-    @NotNull(message = "Date is required")
-    @FutureOrPresent(message = "Date must be in the present or future")
-    private LocalDate date;
+        @NotNull(message = "Type is required") TrainingType type,
 
-    @JsonProperty("duration")
-    @Min(value = 1, message = "Duration must be at least 1 hour")
-    private int durationInHours;
+        @NotNull(message = "Date is required")
+        @FutureOrPresent(message = "Date must be in the present or future") LocalDate date,
 
-    // Getters and Setters
+        @JsonProperty("duration")
+        @Min(value = 1, message = "Duration must be at least 1 hour") int durationInHours
+) {
+    // No need for explicit getters or setters as records provide them automatically.
 }

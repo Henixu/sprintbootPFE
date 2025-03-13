@@ -11,7 +11,7 @@ public class TrainingSession {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long trainingSessionId;
 
     private Date start;
 
