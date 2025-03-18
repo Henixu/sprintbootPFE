@@ -23,6 +23,10 @@ public class TrainingSession {
     @JoinColumn(name = "training_id")
     private Training training;
 
+
+    @ManyToOne
+    @JoinColumn(name = "room_id")
+    private Room room;
     // Constructors
     public TrainingSession() {
     }
