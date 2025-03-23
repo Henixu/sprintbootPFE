@@ -10,6 +10,7 @@ import { StoreModule } from '@ngrx/store';
 import { RegisterComponent } from './account/register/register.component';
 import { TopbarComponent } from './layouts/topbar/topbar.component';
 import { MainlayoutComponent } from './layouts/mainlayout/mainlayout.component';
+import { SidebarComponent } from './layouts/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { MainlayoutComponent } from './layouts/mainlayout/mainlayout.component';
     LoginComponent,
     RegisterComponent,
     TopbarComponent,
+    SidebarComponent,
     MainlayoutComponent
   ],
   imports: [
